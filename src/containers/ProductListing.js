@@ -5,8 +5,8 @@ import Product from "./Product";
 import { setProducts } from "../redux/actions/productActions";
 
 const ProductListing = () => {
-  // const products = useSelector((state) => state);
-  // const dispatch = useDispatch();
+  const products = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const fetchProducts = async () => {
     const response = await axios
@@ -14,17 +14,17 @@ const ProductListing = () => {
       .catch((err) => {
         console.log("err", err);
       });
-    console.log(response);
+    dispatch(setProducts(response.data));
   };
 
-  fetchProducts();
-  // useEffect(() => {
-
-  // }, []);
+  
+  useEffect(() => {
+fetchProducts();
+  }, []);
 
   return (
-    <div className="ui grid container ct">
-      <div></div>
+    <div className="ui grid container">
+      <Product />
     </div>
   );
 };

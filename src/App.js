@@ -3,10 +3,9 @@ import "./App.css";
 import Header from "./containers/Header";
 import ProductDetail from "./containers/ProductDetail";
 import ProductListing from "./containers/ProductListing";
-
 function App() {
   return (
-    <div className="app">
+    <div className="App">
       <Router>
         <Header />
         <Routes>
