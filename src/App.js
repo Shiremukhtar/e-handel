@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Cart from "./containers/Cart";
 import Header from "./containers/Header";
 import ProductDetail from "./containers/ProductDetail";
 import ProductListing from "./containers/ProductListing";
@@ -10,10 +11,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ProductListing />}></Route>
-          <Route
-            path="/product/:productId"
-            element={<ProductDetail />}
-          ></Route>
+          <Route path="/product/:productId" element={<ProductDetail />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
           <Route>404 Not Found!</Route>
         </Routes>
       </Router>

@@ -10,10 +10,12 @@ const ProductListing = () => {
 
   const fetchProducts = async () => {
     const response = await axios
-      .get("https://fakestoreapi.com/products")
+      // .get("https://fakestoreapi.com/products")
+      .get("https://localhost:7182/api/Product")
       .catch((err) => {
         console.log("err", err);
       });
+      console.log(response.data);
     dispatch(setProducts(response.data));
   };
 
