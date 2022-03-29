@@ -1,8 +1,7 @@
 import { ActionTypes } from "../constants/action-types";
 
-const initialState = {
-  cartItems: [],
-};
+const initialState = [];
+
 
 export const cartReducer = (state = initialState, { type, payload }) => {
   switch (type) {

@@ -4,7 +4,15 @@
   margin: 0;
 }
 
-.ui.cards > .card > .image {
+.navbar-nav a{
+  font-size: 1.125rem;
+}
+
+.link {
+    text-decoration: "none",
+  }
+
+/* .ui.cards > .card > .image {
   height: 250px;
   padding: 20px;
   background: #fff;
@@ -91,6 +99,9 @@
   font-size: 18px;
   margin-left: 0;
 }
+ .link {
+    text-decoration: "none",
+  } */
 /* @media (width > 768) {
   .ui.grid.container{
     display: flex;
