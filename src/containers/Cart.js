@@ -29,6 +29,8 @@ const Cart = () => {
         }, [carti]);
         console.log(carti);
 
+        const totalPrice = carti.reduce((a, c) => a + c.price * c.qty, 0);
+
          const EmptyCart = () => (
            <Typography variant="subtitle1">
              You have no items in your shopping cart,
@@ -39,10 +41,15 @@ const Cart = () => {
            </Typography>
          );
   return (
-    <div className="ui grid container">
-          {!carti.length ? <EmptyCart /> : <CartItem />}
+    <div className="container my-5 py-5">
+      <div className="row justify-content-center">
+        {!carti.length ? <EmptyCart /> : <CartItem />}
+      </div>
+      <div className="display-5 fw-bold mt-15 mb-10">
+        {" "}
+        Total Price ${totalPrice}
+      </div>
     </div>
-   
   );
 }
 
