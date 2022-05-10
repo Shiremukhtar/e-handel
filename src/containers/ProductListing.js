@@ -4,57 +4,67 @@ import { useDispatch, useSelector } from "react-redux";
 import Product from "./Product";
 import { fetchProducts } from "../redux/actions/productActions";
 import Skeleton from "react-loading-skeleton";
+import { Link } from 'react-router-dom'
 
 const ProductListing = () => {
   const products = useSelector((state) => state.allProducts.products);
-  const [loading, setLoading] = useState(false);
+  console.log(products)
+  // const [loading, setLoading] = useState(false);
   const [filtared, setFilter] = useState([]);
-  const cartItems = useSelector((state) => state.cartItem);
+  console.log(filtared);
+  // const cartItems = useSelector((state) => state.cartItem);
+  let componentMounted = true;
   const dispatch = useDispatch();
   // const fetchCart = async () => {
-  //   const response = await axios
-  //     // .get("https://fakestoreapi.com/products")
-  //     .get("https://localhost:7182/api/shoppingCart/1/getitems")
-  //     .catch((err) => {
-  //       console.log("err", err);
-  //     });
-  //   console.log(response.data);
-  //   // dispatch(setCart(response.data));
-  // };
-
+    //   const response = await axios
+    //     // .get("https://fakestoreapi.com/products")
+    //     .get("https://localhost:7182/api/shoppingCart/1/getitems")
+    //     .catch((err) => {
+      //       console.log("err", err);
+      //     });
+      //   console.log(response.data);
+      //   // dispatch(setCart(response.data));
+      // };
+      
+      useEffect(() => {
+        
+        dispatch(fetchProducts());
+        setFilter(products)
+        console.log(filtared)
+        // fetchCart();
+      }, []);
+      useEffect(() => {
+        
+        setFilter(products)
+      },[])
   // useEffect(() => {
   //   fetchCart();
   // }, []);
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-    // fetchCart();
-  }, []);
-  
 
-  const Loading = () => {
-    return (
-      <>
-        <div className="col-md-3">
-          <Skeleton height={350} />
-        </div>
-        <div className="col-md-3">
-          <Skeleton height={350} />
-        </div>
-        <div className="col-md-3">
-          <Skeleton height={350} />
-        </div>
-        <div className="col-md-3">
-          <Skeleton height={350} />
-        </div>
-      </>
-    );
-  };
+  // const Loading = () => {
+  //   return (
+  //     <>
+  //       <div className="col-md-3">
+  //         <Skeleton height={350} />
+  //       </div>
+  //       <div className="col-md-3">
+  //         <Skeleton height={350} />
+  //       </div>
+  //       <div className="col-md-3">
+  //         <Skeleton height={350} />
+  //       </div>
+  //       <div className="col-md-3">
+  //         <Skeleton height={350} />
+  //       </div>
+  //     </>
+  //   );
+  // };
 
   const filterProducts = (cat) => {
     const updatedList = products.filter((x) => x.categoryName === cat);
     setFilter(updatedList);
-    alert(updatedList)
+   
   };
 
   const ShowProducts = () => {
@@ -92,7 +102,64 @@ const ProductListing = () => {
             Electronic
           </button>
         </div>
-        <Product />
+        {filtared.length > 0 ? filtared.map((product) => {
+          return (
+            <div className="col-md-3 mb-4" key={product.id}>
+              {/* <Link to={`/product/${id}`}> */}
+              <div className="card h-100 text-center p-4" key={product.id}>
+                <img
+                  src={product.imageURL}
+                  className="card-img-top"
+                  alt={product.name}
+                  height="250px"
+                />
+                <div className="card-body">
+                  <h5 className="card-title mb-0">
+                    {product.name.substring(0, 12)}
+                  </h5>
+                  <p className="card-text lead fw-bold">$ {product.price}</p>
+                  <p className="card-text">{product.category}</p>
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="btn btn-outline-dark"
+                  >
+                    Buy Now
+                  </Link>
+                </div>
+              </div>
+              {/* </Link> */}
+            </div>
+          ); 
+        }) : products.map((product) => {
+          console.log(product)
+           return (
+             <div className="col-md-3 mb-4" key={product.id}>
+               {/* <Link to={`/product/${id}`}> */}
+               <div className="card h-100 text-center p-4" key={product.id}>
+                 <img
+                   src={product.imageURL}
+                   className="card-img-top"
+                   alt={product.name}
+                   height="250px"
+                 />
+                 <div className="card-body">
+                   <h5 className="card-title mb-0">
+                     {product.name.substring(0, 12)}
+                   </h5>
+                   <p className="card-text lead fw-bold">$ {product.price}</p>
+                   <p className="card-text">{product.category}</p>
+                   <Link
+                     to={`/product/${product.id}`}
+                     className="btn btn-outline-dark"
+                   >
+                     Buy Now
+                   </Link>
+                 </div>
+               </div>
+               {/* </Link> */}
+             </div>
+           ); 
+        })}
       </>
     );
   };
@@ -106,7 +173,8 @@ const ProductListing = () => {
         </div>
       </div>
       <div className="row justify-content-center">
-        {loading ? <Loading /> : <ShowProducts />}
+        {/* {loading ? <Loading /> : <ShowProducts />} */}
+        <ShowProducts />
       </div>
     </div>
   );

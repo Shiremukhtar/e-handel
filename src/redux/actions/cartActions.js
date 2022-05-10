@@ -20,3 +20,18 @@ export const delCart = (product) => {
     payload: product,
   };
 };
+
+export const delCartProduct = (product) => {
+  return {
+    type: "DELCartProduct",
+    payload: product,
+  };
+};
+
+export const clearCart = () => {
+  return {
+    type: "ClearCart",
+  };
+};
+
+

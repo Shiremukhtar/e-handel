@@ -31,3 +31,9 @@ export const removeSelectedProduct = () => {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
+
+export const emptyCart = () => {
+  return {
+    type: ActionTypes.CLEAR_CART,
+  }
+}

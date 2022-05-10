@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { delCart, addCart  } from "../redux/actions/cartActions";
+import { delCart, addCart, delCartProduct } from "../redux/actions/cartActions";
 const CartItem = () => {
     //  const cart = useSelector((state) => state.cartItem.cartItems);
     const carti = useSelector((state) => state.handleCart);
@@ -9,6 +9,11 @@ const CartItem = () => {
      const addToCart = (product) => {
        dispatch(addCart(product));
      };
+    const removeFromCart = (product) => {
+      // const product = carti.find(p => p.id === productId);
+      console.log(product)
+      dispatch(delCartProduct(product));
+    };
 
     const removeCartItem = (product) => {
       dispatch(delCart(product))
@@ -31,27 +36,28 @@ const CartItem = () => {
                  Quantity: {qty} x ${price}
                </span>
                <span className="card-text fw-bold">
-                 DelTotal {}$ {price * qty}
+                 ${price * qty}
                </span>
                <div className="d-flex align-items-center justify-context-between mt-3">
                  <button
                    className="btn btn-small ms-3"
                    onClick={() => {
-                     addToCart(cartItem);
-                   }}
-                 >
-                   +
+                     removeCartItem(cartItem);
+                  }}
+                  >
+                   -
                  </button>
                  <span className='mx-4'>{qty}</span>
                  <button
                    className="btn btn-small ms-10"
                    onClick={() => {
-                     removeCartItem(cartItem);
+                     addToCart(cartItem);
+                     
                    }}
                  >
-                   -
+                   +
                  </button>
-                 <button className="btn btn-danger ms-5">Remove</button>
+                 <button className="btn btn-danger ms-5" onClick={() => {removeFromCart(cartItem)}}>Remove</button>
                </div>
              </div>
            </div>

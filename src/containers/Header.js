@@ -6,18 +6,13 @@ import { useSelector } from "react-redux";
 const Header = () => {
   // const cartItems = useSelector((state) => state.cartItem.cartItems);
   const state = useSelector((state) => state.handleCart);
-  // console.log(state)
-  // let q;
-  // cartItems.map(qt => {
-  //   q =+ qt.qty
-  // })
- 
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-white py-3">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white">
         <div className="container">
           <Link className="navbar-brand fw-bold fs-4" to="/">
-            LA COLLECTION
+            SHIRE COLLECTION
           </Link>
           <button
             className="navbar-toggler"
@@ -38,30 +33,31 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/products">
+                <Link className="nav-link active" to="/products">
                   Products
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="about">
+                <Link className="nav-link active" to="about">
                   About
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="Contact">
+                <Link className="nav-link active" to="Contact">
                   Contact
                 </Link>
               </li>
             </ul>
             <div className="buttons">
-              <Link to="/login" className="btn btn-outline-dark">
+              <Link to="/login" className="btn btn-outline-dark disable">
                 <i className="fa fa-sign-in me-1"></i> Login
               </Link>
               <Link to="/register" className="btn btn-outline-dark ms-2">
                 <i className="fa fa-user-plus me-1"></i> Register
               </Link>
               <Link to="/cart" className="btn btn-outline-dark ms-2">
-                <i className="fa fa-shopping-cart me-1"></i> Cart ({state.length})
+                <i className="fa fa-shopping-cart me-1"></i> Cart (
+                {state.length})
               </Link>
             </div>
           </div>
