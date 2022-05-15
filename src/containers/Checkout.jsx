@@ -40,6 +40,7 @@ const Checkout = () => {
                           type="text"
                           name="firstname"
                           className="form-control"
+                          required="true"
                         />
                       </div>
                     </div>

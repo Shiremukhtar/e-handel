@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import Product from "./Product";
+
 import { fetchProducts } from "../redux/actions/productActions";
 import Skeleton from "react-loading-skeleton";
 import { Link } from 'react-router-dom'
