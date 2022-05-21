@@ -18,9 +18,9 @@ const CartItem = () => {
     const removeCartItem = (product) => {
       dispatch(delCart(product))
     }
-    
+    console.log(carti)
      const renderList = carti.map((cartItem) => {
-       const { id, name, imageURL, totalPrice, price, qty} = cartItem;
+       const { id, name, imageURL, price, qty} = cartItem;
        return (
          <div className="col-md-3 mb-4" key={id}>
            <div className="card h-100 text-center p-4">

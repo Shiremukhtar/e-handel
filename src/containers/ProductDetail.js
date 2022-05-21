@@ -15,7 +15,7 @@ const ProductDetails = () => {
   let product = useSelector((state) => state.product);
   const { imageURL, name, price, categoryName, description } = product;
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.handleCart.cart)
+  const cart = useSelector((state) => state.handleCart)
  console.log(cart)
 
   
