@@ -20,18 +20,18 @@ const CartItem = () => {
     }
     console.log(carti)
      const renderList = carti.map((cartItem) => {
-       const { id, name, imageURL, price, qty} = cartItem;
+       const { id, title, image, price, qty} = cartItem;
        return (
          <div className="col-md-3 mb-4" key={id}>
            <div className="card h-100 text-center p-4">
              <img
                className="card-img-top"
                height="250px"
-               src={imageURL}
-               alt={name}
+               src={image}
+               alt={title}
              />
              <div className="card-body">
-               <h5 className="card-title mb-3">{name.substring(0, 12)}</h5>
+               <h5 className="card-title mb-3">{title.substring(0, 12)}</h5>
                <span className='card-text fw-bold me-2'>
                  Quantity: {qty} x ${price}
                </span>

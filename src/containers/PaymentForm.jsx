@@ -104,10 +104,10 @@ const PaymentForm = () => {
                     {cart.map((product) => (
                       <ListItem
                         style={{ padding: "10px 0" }}
-                        key={product.name}
+                        key={product.title}
                       >
                         <ListItemText
-                          primary={product.name.substring(0, 12)}
+                          primary={product.title.substring(0, 12)}
                           secondary={`Quantity: ${product.qty}`}
                         />
                         <Typography variant="body2">

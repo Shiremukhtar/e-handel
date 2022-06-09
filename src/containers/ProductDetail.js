@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const [loading, setLoading] = useState(true);
   let product = useSelector((state) => state.product);
-  const { imageURL, name, price, categoryName, description } = product;
+  const { image, title, price, category, description } = product;
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.handleCart)
  console.log(cart)
@@ -67,14 +67,14 @@ const ProductDetails = () => {
     return(
       <>
       <div className="col-md-6">
-        <img src={imageURL} alt={name} height="400px" width="400px"/>
+        <img src={image} alt={title} height="400px" width="400px"/>
       </div>
       <div className="col-md-6">
         <h4 className="text-uppercase text-black-50">
-          {categoryName}
+          {category}
         </h4>
         <h1 className="display-5">
-          {name}
+          {title}
         </h1>
         <h3 className="display-6 fw-bold my-4">
           $ {price}

@@ -6,10 +6,10 @@ const Checkout = () => {
   const totalCartPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
 
   const renderList = cart.map((cartItem, index) => {
-    const { id, name, imageURL, totalPrice, price, qty } = cartItem;
+    const { id, title, image, totalPrice, price, qty } = cartItem;
     return (
       <tr key={index}>
-        <td>{name}</td>
+        <td>{title}</td>
         <td>{price}</td>
         <td>{qty}</td>
         <td>{qty * price}</td>
