@@ -9,6 +9,7 @@ import {
   fetchProduct,
   removeSelectedProduct,
 } from "../redux/actions/productActions.js";
+
 const ProductDetails = () => {
   const { productId } = useParams();
   const [loading, setLoading] = useState(true);
@@ -18,18 +19,7 @@ const ProductDetails = () => {
   const cart = useSelector((state) => state.handleCart)
  console.log(cart)
 
-  
-  // const addToCart = async () => {
-  //   const response = await axios
-  //     .post(`https://localhost:7182/api/ShoppingCart`, {cartId: 1, productId: productId, qty: 1})
-  //     console.log(response.data)
-  //     .catch((err) => {
-  //       console.log("Err: ", err);
-  //     });
-  //      dispatch(setCart(response.data));
-  // }
 
-  
   useEffect(() => {
     setLoading(true)
     if (productId && productId !== "")  dispatch(fetchProduct(productId));
